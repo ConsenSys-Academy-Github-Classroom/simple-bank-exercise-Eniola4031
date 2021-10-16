@@ -60,11 +60,8 @@ contract("SimpleBank", function (accounts) {
 
   it("should deposit correct amount", async () => {
     await instance.enroll({ from: alice });
-    console.log("enrolled");
     await instance.deposit({ from: alice, value: 2  });
-    console.log("deposited");
     const balance = await instance.getBalance.call({ from: alice });
-    console.log("balance deposited",balance.toString);
 
 
     assert.equal(
