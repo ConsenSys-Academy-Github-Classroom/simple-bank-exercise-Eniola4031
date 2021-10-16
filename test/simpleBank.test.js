@@ -60,7 +60,7 @@ contract("SimpleBank", function (accounts) {
 
   it("should deposit correct amount", async () => {
     await instance.enroll({ from: alice });
-    await instance.deposit({ from: alice, value: 2  });
+    await instance.deposit({ from: alice, value: deposit  });
     const balance = await instance.getBalance.call({ from: alice });
 
 
