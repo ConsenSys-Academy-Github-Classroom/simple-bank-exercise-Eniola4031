@@ -13,7 +13,7 @@ var SimpleBank = artifacts.require("./SimpleBank.sol");
 
 contract("SimpleBank", function (accounts) {
   const [contractOwner, alice] = accounts;
-  const deposit = web3.utils.toBN(2);
+  const deposit = web3.utils.toBN(0);
 
   beforeEach(async () => {
     instance = await SimpleBank.new();
@@ -60,8 +60,12 @@ contract("SimpleBank", function (accounts) {
 
   it("should deposit correct amount", async () => {
     await instance.enroll({ from: alice });
-    await instance.deposit({ from: alice, value: deposit });
+    console.log("enrolled");
+    await instance.deposit({ from: alice, value: 2  });
+    console.log("deposited");
     const balance = await instance.getBalance.call({ from: alice });
+    console.log("balance deposited",balance.toString);
+
 
     assert.equal(
       deposit.toString(),
